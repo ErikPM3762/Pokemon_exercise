@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+apply plugin: "androidx.navigation.safeargs"
+
+apply from: rootProject.file("buildSystem/libraries.gradle")
+def libraries = ext.libraries
+apply from: "$rootProject.projectDir/buildsystem/genericbuild.gradle"
+def configuration = ext.configuration
+
+android {
+    namespace 'com.example.data'
+    compileSdk configuration.compileSdkVersion
+    defaultConfig {
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode configuration.versionCode
+        versionName configuration.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+}
+
+dependencies {
+
+    implementation "${libraries.javax_inject}"
+    implementation project(':domain')
+    implementation "${libraries.gson_code}"
+    implementation "${libraries.parceler_api}"
+    kapt 'androidx.room:room-compiler:2.5.2'
+    implementation 'androidx.room:room-common:2.5.2'
+    implementation 'androidx.room:room-ktx:2.5.2'
+    kapt "${libraries.parceler}"
+    implementation "${libraries.kotlinx_coroutines}"
+
+
+    implementation "${libraries.coroutine_retrofit}"
+    implementation "${libraries.okhttp3}"
+}

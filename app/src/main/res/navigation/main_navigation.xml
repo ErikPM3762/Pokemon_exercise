@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/pokemonHome">
+
+    <fragment
+        android:id="@+id/pokemonHome"
+        android:name="com.example.pokemonexercise.ui.home.PokemonHomeFragment"
+        android:label="fragment_login_front_urbano"
+        tools:layout="@layout/fragment_pokemon_home" >
+        <action
+            android:id="@+id/go_to_pokemon_detail"
+            app:destination="@id/pokemonDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/pokemonDetail"
+        android:name="com.example.pokemonexercise.ui.detail.PokemonDetailFragment"
+        android:label="fragment_login_front_urbano"
+        tools:layout="@layout/fragment_pokemon_detail" >
+
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+
+</navigation>

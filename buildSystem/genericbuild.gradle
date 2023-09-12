@@ -1,0 +1,44 @@
+apply plugin: 'androidx.navigation.safeargs'
+apply from: "$rootProject.projectDir/buildsystem/configuration.gradle"
+
+android {
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            versionNameSuffix ".debug"
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
+

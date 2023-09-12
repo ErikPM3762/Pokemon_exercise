@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="txt_black">#000000</color>
+    <color name="txt_color_initials">#162912</color>
+    <color name="initials_background">#AEF8A6</color>
+    <color name="border_initials">#8BFB7F</color>
+
+    <color name="basic_white">#FFFFFFFF</color>
+    <color name="color_gray_button_disable">#84BEDF</color>
+    <color name="color_txt_dialog">#566D77</color>
+    <color name="disabled_button">#D8DFE3</color>
+</resources>

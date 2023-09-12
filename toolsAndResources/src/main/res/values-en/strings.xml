@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tittle_home_pokemon">Pokédex</string>
+    <string name="app_name">PokemonExercise</string>
+    <string name="name_pokemon">Nombre Pokemon</string>
+</resources>

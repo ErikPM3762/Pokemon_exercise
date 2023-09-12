@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'org.jetbrains.kotlin.android'
+
+}
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs"
+
+apply from: rootProject.file("buildSystem/libraries.gradle")
+def libraries = ext.libraries
+apply from: "$rootProject.projectDir/buildsystem/genericbuild.gradle"
+def configuration = ext.configuration
+
+android {
+    namespace 'com.example.pokemonexercise'
+    compileSdk configuration.compileSdkVersion
+    defaultConfig {
+        applicationId 'com.example.pokemonexercise'
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode configuration.versionCode
+        versionName configuration.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+}
+
+dependencies {
+    implementation project(':toolsAndResources')
+    implementation project(':domain')
+    implementation project(':usecase')
+    implementation project(':data')
+
+
+    implementation "${libraries.androidx_core}"
+    implementation "${libraries.androidx_app_compat}"
+    implementation "${libraries.android_material}"
+    implementation "${libraries.junit_test}"
+    implementation "${libraries.android_test_implementation}"
+    implementation "${libraries.android_testespresso}"
+    implementation "${libraries.mockk}"
+    implementation "${libraries.arch_core}"
+
+    implementation "${libraries.kotlinx_coroutines}"
+    implementation "${libraries.androidx_constraint_layout}"
+
+    implementation "${libraries.androidx_navigation}"
+    implementation "${libraries.androidx_navigation_fragment}"
+
+    kapt "${libraries.databinding_kapt}"
+    implementation "${libraries.google_hilt}"
+    kapt "${libraries.hilt_kapt}"
+    implementation "${libraries.navigation_hilt}"
+
+    implementation "${libraries.glide}"
+    implementation "${libraries.glide_ok_http}"
+
+    implementation "${libraries.coroutine_retrofit}"
+    implementation "${libraries.okhttp3}"
+
+    implementation "${libraries.retrofit_converter}"
+    implementation "${libraries.interceptor}"
+
+    implementation "${libraries.lottie}"
+
+
+//Librerias de Room
+    implementation "androidx.room:room-ktx:2.5.2"
+    implementation "androidx.room:room-runtime:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
+
+}

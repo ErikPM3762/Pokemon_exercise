@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+apply from: rootProject.file("buildSystem/libraries.gradle")
+def libraries = ext.libraries
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation "${libraries.gson_code}"
+}
